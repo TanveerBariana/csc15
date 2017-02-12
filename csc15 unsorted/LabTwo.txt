@@ -1,0 +1,73 @@
+/*
+*lab number : 2
+*Tanveer Bariana
+*Section: 1
+*/
+import java.util.Scanner;
+public class LabTwo{
+	public static void main(String[] args){
+		System.out.println("what year is it?");
+		Scanner year = new Scanner(System.in);
+		int yr = year.nextInt();
+		System.out.printf("%11d\n", yr);
+		int days = 0; 
+		JulianDate JD = new JulianDate(); 
+		int date = JD.toJulian(yr,1,1); 
+		int dayOfWeek = (date+1)%7; 
+		for(int i = 1; i<=12; i++){
+			switch(i){
+				case 1: System.out.printf("%14s\n","January"); 
+					days = 31; break;
+				case 2: System.out.printf("%15s\n","February");
+					if(yr%100 == 0){
+						if(yr%400 == 0){
+							days = 29;
+						}
+					}	else if(yr%4 == 0){
+						days = 29;
+					}	else{
+						days = 28;
+					}
+				break;
+				case 3:System.out.printf("%13s\n","March");
+					days = 31; break;
+				case 4: System.out.printf("%13s\n", "April");
+					days = 30; break;
+				case 5: System.out.printf("%12s\n", "May");
+					days = 31; break;
+				case 6: System.out.printf("%13s\n", "June");
+					days = 30; break;
+				case 7: System.out.printf("%13s\n", "July");
+					days = 31; break;
+				case 8: System.out.printf("%14s\n", "August");
+					days = 31; break;
+				case 9: System.out.printf("%15s\n", "September");
+					days = 30; break;
+				case 10: System.out.printf("%14s\n", "October");
+					days = 31; break;
+				case 11: System.out.printf("%14s\n", "November");
+					days = 30; break;
+				case 12: System.out.printf("%15s\n", "December");
+					days = 31; break;
+			}
+			System.out.println("  S  M  T  W  T  F  S");
+			if(dayOfWeek > 0){
+				System.out.printf("%" + (dayOfWeek * 3) +"c", ' ');
+			}
+			int j = 1; 
+			while(j <= days){
+			
+				System.out.printf("%3d", j);
+				dayOfWeek++;
+				if(dayOfWeek == 7 ){
+					System.out.println();
+					dayOfWeek = 0;
+				}
+				j++;
+			}
+			System.out.println();
+			System.out.println();
+		}
+		
+	}
+}
